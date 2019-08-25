@@ -1,14 +1,17 @@
 <template>
   <li class="blog">
     <nuxt-link 
-      :to="localePath({ name: 'blog-slug', params: { slug: blog.name }})"
+      :to="localePath({ name: 'blog-slug', params: { slug: `${blog.section}/${blog.name}` }})"
     >
-      <ImageResponsive
-        :imageURL="`blog/${blog.id}/_thumbnail.jpg`"
-        :classes="'cardThumbnail'"
-        :width="'952'"
-        :height="'509'"
-        :alt="blog.cardAlt" />
+      <div class="img-container">
+        <ImageResponsive
+          :imageURL="`blog/${blog.id}/_thumbnail.jpg`"
+          :classes="'cardThumbnail'"
+          :width="'952'"
+          :height="'509'"
+          :alt="blog.title" 
+        />
+      </div>
       <h3 class="blog__title">
         {{ blog.title }}
       </h3>
@@ -30,7 +33,16 @@
 </script>
 
 <style lang="scss">
+.img-container {
+  // height: 275px;
+  // width: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cardThumbnail {
+  height: 100%;
     transition: all ease .75s;
     opacity: .7;
     &[lazy='loaded'] {
@@ -38,6 +50,7 @@
     }
   }
   .blog {
+
 
     @media (min-width: $screen-sm){
       padding-bottom: 0;

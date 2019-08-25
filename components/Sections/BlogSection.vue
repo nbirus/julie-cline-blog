@@ -1,10 +1,5 @@
 <template>
   <section>
-    <div class="blogs__top">
-      <div>
-        <h2>{{ $t('posts') }}</h2>
-      </div>
-    </div>
     <ul class="blogs">
       <blog-card
         v-for="blog in blogs"

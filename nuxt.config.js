@@ -1,7 +1,7 @@
 const builtAt = new Date().toISOString()
 const path = require('path')
 const { I18N } = require('./locales/i18n-nuxt-config')
-import blogsEn from './contents/blogsEn.js'
+import blogs from './contents/blogs.js'
 
 const productionUrl = {
   en: "/en",
@@ -117,6 +117,22 @@ module.exports = {
   },
 
   generate: {
-    routes: blogsEn.map(w => `/blog/${w}`)
+    routes: getBlogRoutes()
   },
+
+  router: {
+    linkActiveClass: 'active'
+  },
+
 }
+
+function getBlogRoutes() {
+  let routes = []
+  for (let section in blogs) {
+    blogs[section].forEach(blog => {
+      routes.push(`/${section}/${blog}`)
+    })
+  }
+  return routes
+}
+

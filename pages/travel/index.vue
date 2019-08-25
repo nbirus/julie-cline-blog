@@ -2,13 +2,6 @@
   <div class="page-index">
     <div class="container">
       <BlogCarousel :blogs="blogs" />
-
-      <div class="blogs__top">
-        <div>
-          <h2>Recent Posts</h2>
-        </div>
-      </div>
-
       <BlogSection :blogs="blogs" />
     </div>
   </div>
@@ -17,7 +10,7 @@
 <script>
   import BlogCarousel from "~/components/carousel/BlogCarousel"
   import BlogSection from "~/components/Sections/BlogSection"
-  import { getAllBlogs } from '~/services/blogs.js'
+  import { getBlogSection } from '~/services/blogs.js'
 
   export default {
     components: { BlogSection, BlogCarousel },
@@ -41,7 +34,7 @@
       };
     },
     async asyncData ({app}) {
-      return getAllBlogs()
+      return getBlogSection('travel')
     },
     computed: {
       ogImage: function () {

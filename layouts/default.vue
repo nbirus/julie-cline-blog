@@ -1,15 +1,15 @@
 <template>
   <div class="layout">
+    <app-header />
     <nuxt class="nuxt-content"/>
-    <!-- <Footer/> -->
   </div>
 </template>
 <script>
-  import Footer from '~/components/Sections/Footer'
+  import AppHeader from '~/components/Sections/Header'
 
   export default {
     components: {
-      Footer
+      AppHeader
     }
   }
 </script>

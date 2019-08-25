@@ -5,7 +5,7 @@
 
       <div class="blogs__top">
         <div>
-          <h2>Recent Posts</h2>
+          <h2>Lately</h2>
         </div>
       </div>
 
@@ -17,7 +17,7 @@
 <script>
   import BlogCarousel from "~/components/carousel/BlogCarousel"
   import BlogSection from "~/components/Sections/BlogSection"
-  import { getAllBlogs } from '~/services/blogs.js'
+  import { getBlogSection } from '~/services/blogs.js'
 
   export default {
     components: { BlogSection, BlogCarousel },
@@ -41,7 +41,7 @@
       };
     },
     async asyncData ({app}) {
-      return getAllBlogs()
+      return getBlogSection('lately')
     },
     computed: {
       ogImage: function () {

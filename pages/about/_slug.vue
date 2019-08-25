@@ -4,15 +4,9 @@
       <div class="elevate-cover">
         <div class="elevate-cover__textOffset">
           <div class="elevate-cover__left">
-            <nuxt-link :to="localePath('index')">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 4" aria-hidden="true" style="width: 16px; transform: rotate(180deg);">
-                  <polygon fill="currentColor" points="0 2.33 4.72 2.33 3.53 3.53 4 4 6 2 4 0 3.53 0.47 4.72 1.67 0 1.67 0 2.33"/>
-              </svg>
-              {{ $t('comeBack') }}
-            </nuxt-link>
+            
           </div>
           <div class="elevate-cover__left">
-            <span class="blogSelected-year">{{ year }}</span>
             <h1 class="elevate-cover__title">
               {{ title }}
             </h1>
@@ -21,15 +15,9 @@
         </div>
         <ImageResponsive
           :imageURL="'blog/' + id + '/_main.jpg'"
-          v-if="!noMainImage"
           width="100%"
           class="elevate-cover__img"
           :alt="'Blog picture'" />
-        <component
-          v-else
-          class="elevate-cover__img"
-          :is="extraComponentLoader"
-        />
       </div>
     </div>
     <div class="container small">
@@ -37,7 +25,6 @@
         <DynamicMarkdown
           :render-func="renderFunc"
           :static-render-funcs="staticRenderFuncs"
-          :extra-component="extraComponent" 
         />
       </no-ssr>
     </div>
@@ -53,7 +40,7 @@
   export default {
 
     async asyncData ({params, app}) {
-      const fileContent = await import(`~/contents/blog/${params.slug}.md`)
+      const fileContent = await import(`~/contents/about/about.md`)
       const attr = fileContent.attributes
       return {
         name: params.slug,
@@ -68,7 +55,6 @@
         noMainImage: attr.noMainImage,
         description: attr.description,
         related: attr.related,
-        extraComponent: attr.extraComponent,
         renderFunc: fileContent.vue.render,
         staticRenderFuncs: fileContent.vue.staticRenderFns,
         image: {
@@ -110,7 +96,7 @@
 
     computed: {
       ogImage () {
-        return `${process.env.baseUrl}/images/blog/${this.id}/_thumbnail.jpg`;
+        return `${process.env.baseUrl}/images/about/${this.id}/_thumbnail.jpg`;
       },
       pageTitle () {
         return this.title + ' – Julie Cline';
@@ -120,23 +106,7 @@
       },
       hreflang () {
         return ''
-        // if (!this.trans) {
-        //   return ''
-        // }
-        // return {
-        //   hid: 'alternate-hreflang-' + this.showLocales[0].iso,
-        //   rel: 'alternate',
-        //   href: `${process.env.baseUrl + (this.showLocales[0].code === 'en' ? '' : '/es')}/blog/${this.trans}`,
-        //   hreflang: this.showLocales[0].code
-        // }
       },
-
-      extraComponentLoader () {
-        if (!this.extraComponent) {
-          return null
-        }
-        return () => import(`~/components/blog/${this.extraComponent}.vue`)
-      }
     }
   }
 </script>
