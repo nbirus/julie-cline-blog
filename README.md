@@ -1,37 +1,13 @@
-<p align="center">
-  <a href="https://nuxtjs.org/">
-  <img src="https://avatars2.githubusercontent.com/u/23360933?s=200&v=4" height="60">
-  </a>
-  +
-  <img src="https://geekytheory.com/wp-content/uploads/2014/03/markdown_inte-1024x630.png" height="60">
-</p>
-<h1 align="center">
-  Nuxt + Markdown blog starter
-</h1>
-<p align="center">
-  This is not an official project. It's made by <a href="https://marinaaisa.com/">Marina Aísa</a> and you can contribute submitting a pull-request.
-  </a>
-</p>
-
 ## ⚡️ Live
 [Check it live](https://nuxt-markdown-blog-starter.netlify.com/)
 
 ## ✨ Quick start
 
-1.  **Clone this repository.**
+1.  Navigate into your site’s directory and start it up.
 
     ```sh
-    git clone https://github.com/marinaaisa/nuxt-markdown-blog-starter.git
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd nuxt-markdown-blog-starter/
     npm install
-    npm run dev
+    npm run serve
     ```
 
 3.  **Running!**

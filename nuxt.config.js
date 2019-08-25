@@ -6,7 +6,7 @@ import blogsEn from './contents/blogsEn.js'
 const productionUrl = {
   en: "/en",
 };
-const baseUrl = 'https://marinaaisa.com';
+const baseUrl = 'https://julie-clone.com';
 
 module.exports = {
   env: {
@@ -14,7 +14,7 @@ module.exports = {
     productionUrl
   },
   head: {
-    title: 'Marina Aisa | Product Designer & Front-end Developer',
+    title: 'Julie Cline | Blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' },
@@ -23,7 +23,7 @@ module.exports = {
       { name: 'theme-color', content: '#c1c1c1' },
       { name: 'robots', content: 'index, follow' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:site', content: '@marinaaisa' },
+      { name: 'twitter:site', content: '@julie-cline-twitter' },
       { property: 'og:type', content: 'profile' },
       { property: 'og:updated_time', content: builtAt }
     ],
