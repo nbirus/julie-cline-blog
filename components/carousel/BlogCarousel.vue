@@ -1,17 +1,32 @@
 <template>
-  <div>
+  <div class="carousel">
+
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
       <!-- Full-width images with number and caption text -->
       <div class="mySlides" v-for="(blog, index) in blogs" :key="index">
-        <ImageResponsive
-          :imageURL="`blog/${blog.id}/_main.jpg`"
-          alt="Julie Cline Logo"
-          width="100%"
-        />
-        <div class="text" v-html="blog.title"></div>
+            <nuxt-link 
+      :to="localePath({ name: 'blog-slug', params: { slug: `${blog.section}/${blog.name}` }})"
+    >
+        <div class="img-container">
+          <ImageResponsive
+            class="img"
+            :imageURL="`blog/${blog.id}/_main.jpg`"
+            alt="Julie Cline Logo"
+            width="100%"
+          />
+        </div>
+
+        <div class="text-container">
+          <div class="text">
+            <h2 v-html="blog.title"></h2>
+            <h3 v-html="blog.date"></h3>
+          </div>
+        </div>
+    </nuxt-link>
+
       </div>
 
       <!-- Next and previous buttons -->
@@ -29,6 +44,7 @@
         @click="currentSlide(index)"
       />
     </div>
+
 
   </div>
 </template>
@@ -75,12 +91,40 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '@/assets/css/base/_fonts.scss';
+
+.carousel {
+  height: 70vh;
+  overflow: hidden;
+}
+.img-container {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+.text-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
 
 /* Slideshow container */
 .slideshow-container {
   position: relative;
-  margin: auto;
+  height: 100%;
 }
 
 /* Hide the images by default */
@@ -117,16 +161,43 @@ export default {
 
 /* Caption text */
 .text {
-  background-color: white;
-  color: black;
+  background-color: fade-out(black, .15);
+  color: white;
   font-size: 2rem;
-  padding: 8px 12px;
-  position: absolute;
-  top: 50%;
-  left: calc(50% - 150px);
-  width: 300px;
+  padding: 3rem 3rem;
+  width: 400px;
   text-align: center;
-  border-radius: 5px;
+  font-weight: $bold;
+
+  h2 {
+    color: white;
+    padding-bottom: 0;
+    font-family: $font-family-blog;
+  }
+  h3 {
+    font-weight: $regular;
+    font-size: $fs-h6;
+    position: relative;
+
+    &:before {
+      content: "";
+      background-color: fade-out(#fff, .5);
+      height: 1px;
+      width: 50px;
+      position: absolute;
+      left: 4rem;
+      top: 1rem;
+    }
+    &:after {
+      content: "";
+      background-color: fade-out(#fff, .5);
+      height: 1px;
+      width: 50px;
+      position: absolute;
+      right: 4rem;
+      top: 1rem;
+    }
+  }
 }
 
 /* Number text (1/3 etc) */

@@ -2,7 +2,7 @@
 name: 'adulting-101'
 title: Adulting 101
 section: lately
-year: December 24, 2017
+date: December 24, 2017
 id: 'adulting-101'
 description: |
   How to adult

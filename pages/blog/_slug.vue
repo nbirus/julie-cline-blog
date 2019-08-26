@@ -12,7 +12,7 @@
             </nuxt-link>
           </div>
           <div class="elevate-cover__left">
-            <span class="blogSelected-year">{{ year }}</span>
+            <span class="blogSelected-date">{{ date }}</span>
             <h1 class="elevate-cover__title">
               {{ title }}
             </h1>
@@ -51,7 +51,8 @@
 
 
   export default {
-
+    scrollToTop: false,
+    middleware: 'scroll',
     async asyncData ({params, app}) {
       const fileContent = await import(`~/contents/blog/${params.slug}.md`)
       const attr = fileContent.attributes
@@ -59,7 +60,7 @@
         name: params.slug,
         title: attr.title,
         trans: attr.trans,
-        year: attr.year,
+        date: attr.date,
         id: attr.id,
         owner: attr.owner,
         colors: attr.colors,

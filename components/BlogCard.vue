@@ -76,7 +76,7 @@
 
     &__description {
       margin: 0;
-      color: $grey-2;
+      color: $n2;
     }
   }
 </style>

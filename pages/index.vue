@@ -1,15 +1,13 @@
 <template>
   <div class="page-index">
+    <BlogCarousel :blogs="blogs" />
     <div class="container">
-      <BlogCarousel :blogs="blogs" />
-
       <div class="blogs__top">
-        <div>
-          <h2>Recent Posts</h2>
-        </div>
+        <h2>Recent Posts</h2>
       </div>
 
       <BlogSection :blogs="blogs" />
+
     </div>
   </div>
 </template>
@@ -20,6 +18,8 @@
   import { getAllBlogs } from '~/services/blogs.js'
 
   export default {
+    scrollToTop: false,
+    middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
       name: 'slide-fade'

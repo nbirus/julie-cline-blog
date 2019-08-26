@@ -2,7 +2,7 @@
 name: 'traveling-on-a-budget'
 title: Traveling on a Budget
 section: travel
-year: 28 May 2019
+date: 28 May 2019
 id: 'traveling-on-a-budget'
 description: |
   Description for how to travel on a budget

@@ -38,7 +38,8 @@
 
 
   export default {
-
+    scrollToTop: false,
+    middleware: 'scroll',
     async asyncData ({params, app}) {
       const fileContent = await import(`~/contents/about/about.md`)
       const attr = fileContent.attributes
@@ -46,7 +47,7 @@
         name: params.slug,
         title: attr.title,
         trans: attr.trans,
-        year: attr.year,
+        date: attr.date,
         id: attr.id,
         owner: attr.owner,
         colors: attr.colors,

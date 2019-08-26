@@ -13,6 +13,8 @@
   import { getBlogSection } from '~/services/blogs.js'
 
   export default {
+    scrollToTop: false,
+    middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
       name: 'slide-fade'

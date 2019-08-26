@@ -109,7 +109,7 @@ const rowsSample = [
   }, {
     name: 'London Grammar',
     country: 'England',
-    song: 'Wasting My Young Years'
+    song: 'Wasting My Young dates'
   }, {
     name: 'Tom Odell',
     country: 'England',
@@ -235,7 +235,7 @@ export default {
   }
 
   thead {
-    color: $grey-2;
+    color: $n2;
   
     tr {
       display: grid;
