@@ -7,26 +7,32 @@
 
       <!-- Full-width images with number and caption text -->
       <div class="mySlides" v-for="(blog, index) in blogs" :key="index">
-            <nuxt-link 
-      :to="localePath({ name: 'blog-slug', params: { slug: `${blog.section}/${blog.name}` }})"
-    >
-        <div class="img-container">
-          <ImageResponsive
-            class="img"
-            :imageURL="`blog/${blog.id}/_main.jpg`"
-            alt="Julie Cline Logo"
-            width="100%"
-          />
-        </div>
-
-        <div class="text-container">
-          <div class="text">
-            <h2 v-html="blog.title"></h2>
-            <h3 v-html="blog.date"></h3>
+        <nuxt-link 
+          :to="localePath({ name: 'blog-slug', params: { slug: `${blog.section}/${blog.name}` }})"
+        >
+          <!-- bg img -->
+          <div class="img-container">
+            <ImageResponsive
+              class="img"
+              :imageURL="`blog/${blog.id}/_main.jpg`"
+              alt="Julie Cline Logo"
+              width="100%"
+            />
+            <div class="img-overlay"></div>
           </div>
-        </div>
-    </nuxt-link>
 
+          <!-- text-box -->
+          <div class="text-container">
+            <div class="text">
+              <h1 v-html="blog.section"></h1>
+              <h2 v-html="blog.title"></h2>
+              <h3 v-html="blog.description"></h3>
+              <!-- <h4>- {{blog.date}}</h4> -->
+              <button class="button">READ POST</button>
+            </div>
+          </div>
+        
+        </nuxt-link>
       </div>
 
       <!-- Next and previous buttons -->
@@ -36,7 +42,7 @@
     </div>
 
     <!-- The dots/circles -->
-    <div style="text-align:center" class="dots" >
+    <div class="dots" >
       <span 
         v-for="(blog, index) in blogs" 
         :key="`t-${index}`"
@@ -50,6 +56,9 @@
 </template>
 
 <script>
+
+let slideInterval = undefined
+
 export default {
   name: 'carousel',
   props: {
@@ -64,6 +73,9 @@ export default {
   },
   mounted() {
     this.plusSlides(0)
+    // slideInterval = setInterval(() => {
+    //   this.plusSlides(1)
+    // }, 3000);
   },
   methods: {
     plusSlides(n) {
@@ -80,13 +92,18 @@ export default {
       if (n < 1) {this.slideIndex = slides.length}
       for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none"; 
+          slides[i].classList.remove('slide-active')
       }
       for (i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" active", "");
       }
       slides[this.slideIndex-1].style.display = "block"; 
+      slides[this.slideIndex-1].classList.add('slide-active')
       dots[this.slideIndex-1].className += " active";
     }
+  },
+  beforeDestroy() {
+    clearInterval(slideInterval)
   }
 }
 </script>
@@ -94,9 +111,19 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/css/base/_fonts.scss';
 
+.slide-active .img {
+  animation: carousel .5s ease;
+}
+.img {
+  animation: carousel-leave .5s ease;
+}
+
 .carousel {
   height: 70vh;
   overflow: hidden;
+  max-width: 1600px;
+  max-height: 800px;
+  margin: 0 auto;
 }
 .img-container {
   width: 100%;
@@ -109,8 +136,27 @@ export default {
   width: 100%;
   height: 70vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.button {
+  background-color: darken($primary, 30);
+  margin-top: 6rem;
+  letter-spacing: 2px;
+  // border: solid 2px white;
+  padding: 2rem 4rem 1.75rem;
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 100;
+  border-radius: 50px;
+  width: 220px;
+
+  &:hover {
+    background-color: fade-out(white, .75);
+  }
 }
 .img {
   margin: 0;
@@ -119,6 +165,11 @@ export default {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 100%;
+}
+.img-overlay {
+  position: absolute;
+  height: 100%; width: 100%;
+  background-color: fade-out($primary, .075);
 }
 
 /* Slideshow container */
@@ -161,42 +212,52 @@ export default {
 
 /* Caption text */
 .text {
-  background-color: fade-out(black, .15);
-  color: white;
-  font-size: 2rem;
-  padding: 3rem 3rem;
-  width: 400px;
-  text-align: center;
-  font-weight: $bold;
+  padding: 12rem;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
+  h1 {
+    background-color: fade-out(black, .8);
+    color: white;
+    padding: .5rem 1rem;
+    font-family: $font-family-blog;
+    font-size: 1.6rem;
+    display: block;
+    width: auto;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    transform: translateY(-3rem);
+  }
   h2 {
+    color: $primary;
     color: white;
     padding-bottom: 0;
     font-family: $font-family-blog;
+    font-size: 4.5rem;
+    display: block;
+    width: auto;
+    letter-spacing: -1px;
   }
   h3 {
+    letter-spacing: -1px;
+    display: block;
+    color: white;
     font-weight: $regular;
-    font-size: $fs-h6;
+    font-size: 2rem;
     position: relative;
-
-    &:before {
-      content: "";
-      background-color: fade-out(#fff, .5);
-      height: 1px;
-      width: 50px;
-      position: absolute;
-      left: 4rem;
-      top: 1rem;
-    }
-    &:after {
-      content: "";
-      background-color: fade-out(#fff, .5);
-      height: 1px;
-      width: 50px;
-      position: absolute;
-      right: 4rem;
-      top: 1rem;
-    }
+    margin-bottom: 0;
+  }
+  h4 {
+    display: block;
+    color: fade-out(white, .15);
+    font-weight: $regular;
+    color: darken($primary, 30);
+    font-size: 1.6rem;
+    // font-family: $font-family-blog;
+    // text-decoration: underline;
+    margin-top: 1rem;
   }
 }
 
@@ -212,6 +273,7 @@ export default {
 /* The dots/bullets/indicators */
 .dots {
   margin-top: 2rem;
+  border: solid thin red;
 }
 .dot {
   cursor: pointer;

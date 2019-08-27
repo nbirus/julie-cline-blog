@@ -74,7 +74,7 @@ data: function () {
   padding-bottom: 7rem;
 }
 .logo {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 
   .img {
     width: 250px;
@@ -86,7 +86,6 @@ data: function () {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-
 
   li {
     margin: 0 3rem;

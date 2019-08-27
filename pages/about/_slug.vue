@@ -92,7 +92,7 @@
     },
 
     transition: {
-      name: 'slide-fade'
+      // name: 'slide-fade'
     },
 
     computed: {

@@ -3,9 +3,8 @@
     <BlogCarousel :blogs="blogs" />
     <div class="container">
       <div class="blogs__top">
-        <h2>Recent Posts</h2>
+        <h3 class="primary">Recent Posts</h3>
       </div>
-
       <BlogSection :blogs="blogs" />
 
     </div>
@@ -22,7 +21,7 @@
     middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
-      name: 'slide-fade'
+      // name: 'slide-fade'
     },
     head () {
       return {

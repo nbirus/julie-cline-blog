@@ -84,6 +84,7 @@ img{
 
 .blogs__top {
   margin-top: 8rem!important;
+  margin-bottom: 2rem;
 }
 
 .shape{
@@ -137,6 +138,10 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
+}
+
+.primary {
+  color: $primary;
 }
 
 .text-input {

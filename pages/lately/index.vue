@@ -24,7 +24,7 @@
     middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
-      name: 'slide-fade'
+      // name: 'slide-fade'
     },
     head () {
       return {

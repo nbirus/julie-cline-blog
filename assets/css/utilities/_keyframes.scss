@@ -52,6 +52,18 @@
   }
 }
 
+@keyframes carousel {
+  0% {
+    margin-left: -10%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+
 @keyframes escale10 {
   0% {
     transform: scale(1);
