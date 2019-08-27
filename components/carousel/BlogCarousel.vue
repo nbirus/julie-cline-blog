@@ -73,9 +73,9 @@ export default {
   },
   mounted() {
     this.plusSlides(0)
-    // slideInterval = setInterval(() => {
-    //   this.plusSlides(1)
-    // }, 3000);
+    slideInterval = setInterval(() => {
+      this.plusSlides(1)
+    }, 5000);
   },
   methods: {
     plusSlides(n) {
