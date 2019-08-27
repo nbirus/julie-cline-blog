@@ -21,13 +21,22 @@
             <div class="img-overlay"></div>
           </div>
 
+          <div class="tag-container">
+            <h1 v-html="blog.section"></h1>            
+          </div>
+
+          <div class="blog-container">
+            <h2 v-html="blog.title"></h2>
+            <h3 v-html="blog.description"></h3>
+            <button class="button">READ POST</button>
+          </div>
+
           <!-- text-box -->
-          <div class="text-container">
+          <div class="text-container" v-if="false">
             <div class="text">
               <h1 v-html="blog.section"></h1>
               <h2 v-html="blog.title"></h2>
               <h3 v-html="blog.description"></h3>
-              <!-- <h4>- {{blog.date}}</h4> -->
               <button class="button">READ POST</button>
             </div>
           </div>
@@ -117,30 +126,71 @@ export default {
 .img {
   animation: carousel-leave .5s ease;
 }
+.tag-container {
+  position: absolute;
+  left: 12rem; top: 14rem;
+  
+  h1 {
+    background-color: fade-out(black, .8);
+    color: white;
+    padding: .5rem 1rem;
+    font-family: $font-family-blog;
+    font-size: 1.6rem;
+    display: block;
+    width: auto;
+    margin-bottom: 6rem;
+    text-transform: uppercase;
+    transform: translateY(-3rem);
+  }
+}
+.blog-container {
+  position: absolute;
+  top: 4rem;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12rem;
 
+  h2 {
+    color: $primary;
+    color: white;
+    padding-bottom: 0;
+    font-family: $font-family-blog;
+    font-size: 4.5rem;
+    display: block;
+    width: auto;
+    letter-spacing: -1px;
+  }
+  h3 {
+    letter-spacing: -1px;
+    display: block;
+    color: white;
+    font-weight: $regular;
+    font-size: 2rem;
+    position: relative;
+    margin-bottom: 0;
+    opacity: .85;
+  }
+}
 .carousel {
   height: 70vh;
   overflow: hidden;
   max-width: 1600px;
+  min-height: 600px;
   max-height: 800px;
   margin: 0 auto;
 }
 .img-container {
   width: 100%;
   height: 70vh;
+  min-height: 600px;
+  max-height: 800px;
+
   position: relative;
-}
-.text-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 70vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 .button {
   background-color: darken($primary, 30);
@@ -208,57 +258,6 @@ export default {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  padding: 12rem;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  h1 {
-    background-color: fade-out(black, .8);
-    color: white;
-    padding: .5rem 1rem;
-    font-family: $font-family-blog;
-    font-size: 1.6rem;
-    display: block;
-    width: auto;
-    margin-bottom: 4rem;
-    text-transform: uppercase;
-    transform: translateY(-3rem);
-  }
-  h2 {
-    color: $primary;
-    color: white;
-    padding-bottom: 0;
-    font-family: $font-family-blog;
-    font-size: 4.5rem;
-    display: block;
-    width: auto;
-    letter-spacing: -1px;
-  }
-  h3 {
-    letter-spacing: -1px;
-    display: block;
-    color: white;
-    font-weight: $regular;
-    font-size: 2rem;
-    position: relative;
-    margin-bottom: 0;
-  }
-  h4 {
-    display: block;
-    color: fade-out(white, .15);
-    font-weight: $regular;
-    color: darken($primary, 30);
-    font-size: 1.6rem;
-    // font-family: $font-family-blog;
-    // text-decoration: underline;
-    margin-top: 1rem;
-  }
 }
 
 /* Number text (1/3 etc) */
