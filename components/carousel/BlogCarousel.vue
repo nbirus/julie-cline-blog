@@ -21,26 +21,21 @@
             <div class="img-overlay"></div>
           </div>
 
-          <div class="tag-container">
-            <h1 v-html="blog.section"></h1>            
-          </div>
-
           <div class="blog-container">
             <h2 v-html="blog.title"></h2>
             <h3 v-html="blog.description"></h3>
+
+            <div class="tag-container">
+              <h1 class="font" v-html="blog.section"></h1>            
+              <h1 v-html="blog.date"></h1>            
+            </div>
+
             <button class="button">READ POST</button>
           </div>
-
-          <!-- text-box -->
-          <div class="text-container" v-if="false">
-            <div class="text">
-              <h1 v-html="blog.section"></h1>
-              <h2 v-html="blog.title"></h2>
-              <h3 v-html="blog.description"></h3>
-              <button class="button">READ POST</button>
-            </div>
-          </div>
         
+
+
+
         </nuxt-link>
       </div>
 
@@ -51,12 +46,12 @@
     </div>
 
     <!-- The dots/circles -->
-    <div class="dots" >
+    <div class="dots">
       <span 
         v-for="(blog, index) in blogs" 
         :key="`t-${index}`"
         class="dot" 
-        @click="currentSlide(index)"
+        @click="currentSlide(index + 1)"
       />
     </div>
 
@@ -82,11 +77,15 @@ export default {
   },
   mounted() {
     this.plusSlides(0)
-    slideInterval = setInterval(() => {
-      this.plusSlides(1)
-    }, 5000);
+    this.resetInterval()
   },
   methods: {
+    resetInterval() {
+      clearInterval(slideInterval)
+      slideInterval = setInterval(() => {
+        this.plusSlides(1)
+      }, 10000);
+    },
     plusSlides(n) {
       this.showSlides(this.slideIndex += n);
     },
@@ -111,6 +110,9 @@ export default {
       dots[this.slideIndex-1].className += " active";
     }
   },
+  watch: {
+    'slideIndex': 'resetInterval'
+  },
   beforeDestroy() {
     clearInterval(slideInterval)
   }
@@ -127,25 +129,28 @@ export default {
   animation: carousel-leave .5s ease;
 }
 .tag-container {
-  position: absolute;
-  left: 12rem; top: 14rem;
-  
+  display: flex;
+  padding-top: 2rem;
+
   h1 {
     background-color: fade-out(black, .8);
     color: white;
-    padding: .5rem 1rem;
-    font-family: $font-family-blog;
+    padding: .65rem 1rem .5rem;
     font-size: 1.6rem;
     display: block;
     width: auto;
-    margin-bottom: 6rem;
     text-transform: uppercase;
-    transform: translateY(-3rem);
+    margin-right: 1rem;
+    transform: scale(.9);
+  }
+  .font {
+    // font-family: $font-family-blog;
+    font-weight: $bold;
   }
 }
 .blog-container {
   position: absolute;
-  top: 4rem;
+  top: 2rem;
   width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
@@ -164,6 +169,7 @@ export default {
     display: block;
     width: auto;
     letter-spacing: -1px;
+    text-shadow: 0 0 5px fade-out(black, .75);
   }
   h3 {
     letter-spacing: -1px;
@@ -173,12 +179,10 @@ export default {
     font-size: 2rem;
     position: relative;
     margin-bottom: 0;
-    opacity: .85;
   }
 }
 .carousel {
   height: 70vh;
-  overflow: hidden;
   max-width: 1600px;
   min-height: 600px;
   max-height: 800px;
@@ -219,7 +223,7 @@ export default {
 .img-overlay {
   position: absolute;
   height: 100%; width: 100%;
-  background-color: fade-out($primary, .075);
+  background-color: fade-out($primary, .1);
 }
 
 /* Slideshow container */
@@ -271,15 +275,16 @@ export default {
 
 /* The dots/bullets/indicators */
 .dots {
-  margin-top: 2rem;
-  border: solid thin red;
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
 }
 .dot {
   cursor: pointer;
   height: 15px;
   width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
+  margin: 0 8px;
+  background-color: fade-out($n1, .5);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
@@ -287,7 +292,7 @@ export default {
 
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: $primary;
 }
 
 /* Fading animation */

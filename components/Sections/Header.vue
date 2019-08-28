@@ -133,6 +133,9 @@ data: function () {
   color: $font-color;
   font-weight: $regular;
   
+  &:hover {
+    color: $primary;
+  }
 }
 .route.nuxt-link-exact-active {
   font-weight: $bold;

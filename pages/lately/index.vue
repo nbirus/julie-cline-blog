@@ -1,14 +1,8 @@
 <template>
   <div class="page-index">
+    <BlogCarousel :blogs="blogs" />
     <div class="container">
-      <BlogCarousel :blogs="blogs" />
-
-      <div class="blogs__top">
-        <div>
-          <h2>Lately</h2>
-        </div>
-      </div>
-
+      <h2>Lately</h2>
       <BlogSection :blogs="blogs" />
     </div>
   </div>
@@ -63,3 +57,9 @@ function getBlogRoutes(blogs) {
 }
 
 </script>
+
+<style lang="scss" scoped>
+.container {
+  padding: 10rem 0 5rem;  
+}
+</style>

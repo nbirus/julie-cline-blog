@@ -84,7 +84,12 @@ img{
 
 .blogs__top {
   margin-top: 8rem!important;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .shape{

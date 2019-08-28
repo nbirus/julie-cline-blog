@@ -2,11 +2,8 @@
   <div class="page-index">
     <BlogCarousel :blogs="blogs" />
     <div class="container">
-      <div class="blogs__top">
-        <h3 class="primary">Recent Posts</h3>
-      </div>
+      <h2>Recent Posts</h2>
       <BlogSection :blogs="blogs" />
-
     </div>
   </div>
 </template>
@@ -60,3 +57,9 @@ function getBlogRoutes(blogs) {
 }
 
 </script>
+
+<style lang="scss" scoped>
+.container {
+  padding: 10rem 0 5rem;  
+}
+</style>

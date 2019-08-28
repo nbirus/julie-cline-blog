@@ -49,7 +49,6 @@
   
   import DynamicMarkdown from "~/components/Markdown/DynamicMarkdown.vue"
 
-
   export default {
     scrollToTop: false,
     middleware: 'scroll',
