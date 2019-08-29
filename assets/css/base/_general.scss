@@ -233,6 +233,7 @@ button:active {
     // clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 32% 100%, 0 0);
     -webkit-clip-path: circle(100% at 90% 0%);
     clip-path: circle(100% at 90% 0%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 28% 100%);
   }
 
   &__img, &__textOffset {
