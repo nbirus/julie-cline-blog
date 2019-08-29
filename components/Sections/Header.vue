@@ -23,11 +23,11 @@
 
       <ul class="routes">
         <li><nuxt-link class="route" to="/">HOME</nuxt-link></li>
-        <li><nuxt-link class="route" to="about">ABOUT</nuxt-link></li>
-        <li><nuxt-link class="route" to="lately">LATELY</nuxt-link></li>
-        <li><nuxt-link class="route" to="art">ART</nuxt-link></li>
-        <li><nuxt-link class="route" to="travel">TRAVEL</nuxt-link></li>
-        <li><nuxt-link class="route" to="a-day-in-the-life">A DAY IN THE LIFE</nuxt-link></li>
+        <li><nuxt-link class="route" to="/about">ABOUT</nuxt-link></li>
+        <li><nuxt-link class="route" to="/lately">LATELY</nuxt-link></li>
+        <li><nuxt-link class="route" to="/art">ART</nuxt-link></li>
+        <li><nuxt-link class="route" to="/travel">TRAVEL</nuxt-link></li>
+        <li><nuxt-link class="route" to="/a-day-in-the-life">A DAY IN THE LIFE</nuxt-link></li>
       </ul>
 
     </div>

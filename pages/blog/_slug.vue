@@ -105,7 +105,7 @@
     },
 
     transition: {
-      // name: 'slide-fade'
+      name: 'slide-fade'
     },
 
     computed: {
@@ -207,11 +207,11 @@
   }
 
   &__description {
-    margin: 0;
-    opacity: 0;
-    animation: fadeinmove .5s ease;
-    animation-delay: .5s;
-    animation-fill-mode: forwards;
+    // margin: 0;
+    // opacity: 0;
+    // animation: fadeinmove .5s ease;
+    // animation-delay: .5s;
+    // animation-fill-mode: forwards;
   }
 }
 .dynamicMarkdown {

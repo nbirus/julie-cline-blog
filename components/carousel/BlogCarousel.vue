@@ -24,18 +24,12 @@
           <div class="blog-container">
             <h2 v-html="blog.title"></h2>
             <h3 v-html="blog.description"></h3>
-
             <div class="tag-container">
               <h1 class="font" v-html="blog.section"></h1>            
               <h1 v-html="blog.date"></h1>            
             </div>
-
             <button class="button">READ POST</button>
           </div>
-        
-
-
-
         </nuxt-link>
       </div>
 
@@ -129,8 +123,11 @@ export default {
   animation: carousel-leave .5s ease;
 }
 .tag-container {
+  position: absolute;
+  top: 6rem;
+  right: 0;
   display: flex;
-  padding-top: 2rem;
+  padding-top: 1rem;
 
   h1 {
     background-color: fade-out(black, .8);
@@ -140,7 +137,7 @@ export default {
     display: block;
     width: auto;
     text-transform: uppercase;
-    margin-right: 1rem;
+    margin-right: .5rem;
     transform: scale(.9);
   }
   .font {
@@ -150,7 +147,7 @@ export default {
 }
 .blog-container {
   position: absolute;
-  top: 2rem;
+  top: 0;
   width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
@@ -158,6 +155,7 @@ export default {
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20rem 12rem 6rem;
   padding: 0 12rem;
 
   h2 {
@@ -169,7 +167,7 @@ export default {
     display: block;
     width: auto;
     letter-spacing: -1px;
-    text-shadow: 0 0 5px fade-out(black, .75);
+    text-shadow: 0 0 5px fade-out(black, .25);
   }
   h3 {
     letter-spacing: -1px;
@@ -179,6 +177,7 @@ export default {
     font-size: 2rem;
     position: relative;
     margin-bottom: 0;
+    text-shadow: 0 0 3px fade-out(black, .25);
   }
 }
 .carousel {
@@ -193,11 +192,10 @@ export default {
   height: 70vh;
   min-height: 600px;
   max-height: 800px;
-
   position: relative;
 }
 .button {
-  background-color: darken($primary, 30);
+  background-color: darken($primary, 10);
   margin-top: 6rem;
   letter-spacing: 2px;
   // border: solid 2px white;
@@ -206,7 +204,8 @@ export default {
   font-size: 1.5rem;
   font-weight: 100;
   border-radius: 50px;
-  width: 220px;
+  width: 250px;
+  display: none;
 
   &:hover {
     background-color: fade-out(white, .75);
@@ -223,7 +222,22 @@ export default {
 .img-overlay {
   position: absolute;
   height: 100%; width: 100%;
-  background-color: fade-out($primary, .1);
+  background-color: fade-out(darken($primary,45), .15);
+  box-shadow: inset 0 0 3rem 1rem fade-out(black, .8);
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background-color: darken($primary, 5);
+    animation: carousel-progress 10s;
+  }
+
+  &:hover {
+  }
 }
 
 /* Slideshow container */

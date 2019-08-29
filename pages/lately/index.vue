@@ -1,10 +1,10 @@
 <template>
   <div class="page-index">
-    <BlogCarousel :blogs="blogs" />
     <div class="container">
       <h2>Lately</h2>
       <BlogSection :blogs="blogs" />
     </div>
+    <BlogCarousel :blogs="blogs" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@
     middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
-      // name: 'slide-fade'
+      name: 'slide-fade'
     },
     head () {
       return {
@@ -60,6 +60,12 @@ function getBlogRoutes(blogs) {
 
 <style lang="scss" scoped>
 .container {
-  padding: 10rem 0 5rem;  
+  padding: 0 0 5rem;  
+
+  h2 {
+    display: none;
+    font-size: 2rem;
+    color: $primary;
+  }
 }
 </style>

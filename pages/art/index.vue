@@ -1,24 +1,24 @@
 <template>
   <div class="page-index">
-    <BlogCarousel :blogs="blogs" />
     <div class="container">
-      <h2>Recent Posts</h2>
-      <BlogSection :blogs="blogs" />
+      <h2>Art</h2>
+      <!-- <BlogSection :blogs="blogs" /> -->
     </div>
+    <!-- <BlogCarousel :blogs="blogs" /> -->
   </div>
 </template>
 
 <script>
   import BlogCarousel from "~/components/carousel/BlogCarousel"
   import BlogSection from "~/components/Sections/BlogSection"
-  import { getAllBlogs } from '~/services/blogs.js'
+  import { getBlogSection } from '~/services/blogs.js'
 
   export default {
     scrollToTop: false,
     middleware: 'scroll',
     components: { BlogSection, BlogCarousel },
     transition: {
-      name: 'slide-up'
+      name: 'slide-fade'
     },
     head () {
       return {
@@ -37,7 +37,7 @@
       };
     },
     async asyncData ({app}) {
-      return getAllBlogs()
+      return getBlogSection('art')
     },
     computed: {
       ogImage: function () {
@@ -60,6 +60,12 @@ function getBlogRoutes(blogs) {
 
 <style lang="scss" scoped>
 .container {
-  padding: 16rem 0 5rem;  
+  padding: 0 0 5rem;  
+
+  h2 {
+    display: none;
+    font-size: 2rem;
+    color: $primary;
+  }
 }
 </style>
