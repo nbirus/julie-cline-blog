@@ -137,7 +137,7 @@ data: function () {
     color: $primary;
   }
 }
-.route.nuxt-link-exact-active {
+.route.nuxt-link-exact-active, .route.nuxt-link-active {
   font-weight: $bold;
 
   &:after {

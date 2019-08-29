@@ -8,7 +8,6 @@
           :imageURL="`blog/${blog.id}/_thumbnail.jpg`"
           :classes="'cardThumbnail'"
           :width="'952'"
-          :height="'509'"
           :alt="blog.title" 
         />
       </div>

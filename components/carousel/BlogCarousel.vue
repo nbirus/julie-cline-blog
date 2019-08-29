@@ -20,14 +20,14 @@
             />
             <div class="img-overlay"></div>
           </div>
-
-          <div class="blog-container">
-            <h2 v-html="blog.title"></h2>
-            <h3 v-html="blog.description"></h3>
             <div class="tag-container">
               <h1 class="font" v-html="blog.section"></h1>            
               <h1 v-html="blog.date"></h1>            
             </div>
+          <div class="blog-container">
+            <h2 v-html="blog.title"></h2>
+            <h3 v-html="blog.description"></h3>
+
             <button class="button">READ POST</button>
           </div>
         </nuxt-link>
@@ -125,9 +125,8 @@ export default {
 .tag-container {
   position: absolute;
   top: 6rem;
-  right: 0;
+  right: 6rem;
   display: flex;
-  padding-top: 1rem;
 
   h1 {
     background-color: fade-out(black, .8);
@@ -137,7 +136,6 @@ export default {
     display: block;
     width: auto;
     text-transform: uppercase;
-    margin-right: .5rem;
     transform: scale(.9);
   }
   .font {
@@ -222,7 +220,7 @@ export default {
 .img-overlay {
   position: absolute;
   height: 100%; width: 100%;
-  background-color: fade-out(darken($primary,45), .15);
+  background-color: fade-out(darken($primary, 35), .15);
   box-shadow: inset 0 0 3rem 1rem fade-out(black, .8);
 
   &:after {
