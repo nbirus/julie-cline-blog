@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import BlogCarousel from "~/components/carousel/BlogCarousel"
-  import BlogSection from "~/components/Sections/BlogSection"
+  import BlogCarousel from "~/components/presentation/carousel/Carousel"
+  import BlogSection from "~/components/presentation/BlogSection"
   import { getAllBlogs } from '~/services/blogs.js'
 
   export default {

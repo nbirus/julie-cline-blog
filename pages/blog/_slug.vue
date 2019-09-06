@@ -47,7 +47,7 @@
 
 <script lang="js">
   
-  import DynamicMarkdown from "~/components/Markdown/DynamicMarkdown.vue"
+  import DynamicMarkdown from "~/components/presentation/Markdown/DynamicMarkdown.vue"
 
   export default {
     scrollToTop: false,
@@ -98,9 +98,6 @@
           { name: "twitter:description", content: this.description },
           { name: "twitter:image", content: this.ogImage }
         ],
-        link: [
-          this.hreflang
-        ]
       };
     },
 
@@ -115,22 +112,6 @@
       pageTitle () {
         return this.title + ' – Julie Cline';
       },
-      showLocales () {
-        return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
-      },
-      hreflang () {
-        return ''
-        // if (!this.trans) {
-        //   return ''
-        // }
-        // return {
-        //   hid: 'alternate-hreflang-' + this.showLocales[0].iso,
-        //   rel: 'alternate',
-        //   href: `${process.env.baseUrl + (this.showLocales[0].code === 'en' ? '' : '/es')}/blog/${this.trans}`,
-        //   hreflang: this.showLocales[0].code
-        // }
-      },
-
       extraComponentLoader () {
         if (!this.extraComponent) {
           return null

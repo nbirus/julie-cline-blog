@@ -9,7 +9,7 @@
   </section>
 </template>
 <script>
-import BlogCard from "~/components/BlogCard.vue"
+import BlogCard from "~/components/presentation/BlogCard.vue"
 
 export default {
   components: { BlogCard },

@@ -97,6 +97,7 @@ data: function () {
 
   &.fixed {
     position: fixed;
+    border-bottom: solid thin fade-out($n1, .5);
     width: 100%;
     top: 0;
     left: 0;

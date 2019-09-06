@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import AppHeader from '~/components/Sections/Header'
+  import AppHeader from '~/components/page/Header'
 
   export default {
     components: {
